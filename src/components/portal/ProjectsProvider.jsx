@@ -224,10 +224,10 @@ export function ProjectsProvider({ children }) {
         }
     }, []);
 
-    // Initial load - use cache or seed, never call API
+    // Initial load - always call API to get fresh data
     useEffect(() => {
-        console.log('[CABPOE] ProjectsProvider: Initial mount, loading projects...');
-        loadAndSetProjects(false);
+        console.log('[CABPOE] ProjectsProvider: Initial mount, loading projects from API...');
+        loadAndSetProjects(true); // Force refresh on initial load
     }, []); // Empty deps - only run once on mount
 
     const value = {
